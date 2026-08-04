@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="LD07XrkXMbIvixiFJ3IWy-EuIdbAnq8ulq7JFz0gfyk" />
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undernote | Official Website NZ</title>
+<meta name="description" content="Welcome to the official website of Undernote. Based in New Zealand, Undernote offers a fragrance extending mist designed to help your perfume last longer."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F3EE;
+    --linen: #EDE7DC;
+    --warm-white: #FAF8F5;
+    --sand: #D4C9B6;
+    --taupe: #9C8F7E;
+    --bark: #5C4F3D;
+    --ink: #2A231A;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 5vw;
+    background: rgba(247,243,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand);
+  }
+  .logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+  .logo span { font-style: italic; color: var(--taupe); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; color: var(--bark); text-transform: uppercase; transition: color 0.3s; }
+  nav a:hover { color: var(--taupe); }
+  .nav-cta { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.55rem 1.4rem; border: 1px solid var(--bark); color: var(--bark); text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .nav-cta:hover { background: var(--bark); color: var(--cream); }
+
+  /* LANGUAGE SWITCHER */
+  .lang-switcher { position: relative; flex-shrink: 0; }
+  .lang-toggle-btn {
+    display: flex; align-items: center; gap: 0.45rem;
+    background: none; border: 1px solid var(--bark); cursor: pointer;
+    font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.15em;
+    padding: 0.5rem 0.9rem; color: var(--bark); text-transform: uppercase;
+    transition: background 0.3s, color 0.3s;
+  }
+  .lang-toggle-btn:hover { background: var(--linen); }
+  .lang-toggle-btn .lang-caret { font-size: 0.6rem; transition: transform 0.25s; line-height: 1; }
+  .lang-switcher.open .lang-toggle-btn { background: var(--bark); color: var(--cream); }
+  .lang-switcher.open .lang-toggle-btn .lang-caret { transform: rotate(180deg); }
+  .lang-menu {
+    position: absolute; top: calc(100% + 0.5rem); right: 0;
+    background: var(--warm-white); border: 1px solid var(--sand);
+    min-width: 170px; box-shadow: 0 10px 30px rgba(42,35,26,0.12);
+    opacity: 0; transform: translateY(-8px);
+    pointer-events: none; transition: opacity 0.25s, transform 0.25s;
+    z-index: 150;
+  }
+  .lang-switcher.open .lang-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .lang-option {
+    display: flex; align-items: baseline; gap: 0.6rem; width: 100%;
+    background: none; border: none; cursor: pointer; text-align: left;
+    padding: 0.7rem 1rem; font-family: var(--sans); color: var(--bark);
+    border-bottom: 1px solid var(--linen); transition: background 0.2s, color 0.2s;
+  }
+  .lang-option:last-child { border-bottom: none; }
+  .lang-option:hover { background: var(--linen); }
+  .lang-option.active { background: var(--bark); color: var(--cream); }
+  .lang-option .lang-code { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--taupe); min-width: 28px; }
+  .lang-option.active .lang-code { color: var(--sand); }
+  .lang-option .lang-native { font-size: 0.82rem; letter-spacing: 0.03em; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6vw 4vw 6vw 8vw; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--bark); border: 1px solid var(--sand);
+    padding: 0.35rem 0.9rem; margin-bottom: 2rem; align-self: flex-start;
+  }
+  .hero-title { font-family: var(--serif); font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.5rem; }
+  .hero-title em { font-style: italic; color: var(--taupe); }
+  .hero-problem { font-size: 0.9rem; color: var(--taupe); margin-bottom: 0.6rem; line-height: 1.8; }
+  .hero-body { font-size: 0.92rem; color: var(--bark); max-width: 400px; margin-bottom: 2.5rem; line-height: 2; }
+  .btn-primary { display: inline-block; padding: 1rem 2.5rem; background: var(--bark); color: var(--cream); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background 0.3s; align-self: flex-start; }
+  .btn-primary:hover { background: var(--ink); }
+  .hero-right { background: var(--linen); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .hero-visual { width: 260px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 2; }
+  .bottle-svg { width: 200px; opacity: 1; animation: float 6s ease-in-out infinite; border-radius: 4px; box-shadow: 0 30px 60px rgba(42,35,26,0.18); }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  .hero-ring { position: absolute; border-radius: 50%; border: 1px solid var(--sand); animation: pulse 7s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.07); opacity: 0.2; } }
+  .ring-1 { width: 300px; height: 300px; }
+  .ring-2 { width: 440px; height: 440px; animation-delay: 1.5s; }
+  .ring-3 { width: 580px; height: 580px; animation-delay: 3s; }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--sand); margin: 0 8vw; }
+
+  /* SHARED SECTION STYLES */
+  .section-label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--taupe); margin-bottom: 1.5rem; display: block; }
+  .section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.2; margin-bottom: 2rem; }
+  .section-title em { font-style: italic; color: var(--taupe); }
+
+  /* HOW IT WORKS */
+  .how { padding: 8vw; background: var(--warm-white); }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 4rem; }
+  .how-item { text-align: center; }
+  .how-num { font-family: var(--serif); font-size: 4rem; font-weight: 300; color: var(--sand); line-height: 1; margin-bottom: 1.5rem; }
+  .how-title { font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bark); margin-bottom: 1rem; }
+  .how-body { font-size: 0.88rem; color: var(--taupe); line-height: 1.9; }
+
+  /* COMPARISON */
+  .compare-section { padding: 8vw; }
+  .compare-table { max-width: 780px; margin: 4rem auto 0; }
+  .compare-header { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0; margin-bottom: 0; }
+  .compare-header-cell { padding: 1rem 1.2rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; }
+  .compare-header-cell.highlight { background: var(--bark); color: var(--cream); }
+  .compare-header-cell.dim { background: var(--linen); color: var(--taupe); }
+  .compare-row { display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: 1px solid var(--linen); }
+  .compare-row:first-of-type { border-top: 1px solid var(--linen); }
+  .compare-cell { padding: 1.1rem 1.2rem; font-size: 0.85rem; display: flex; align-items: center; }
+  .compare-cell.feature { color: var(--bark); }
+  .compare-cell.val { justify-content: center; text-align: center; }
+  .compare-cell.col-us { background: rgba(92,79,61,0.05); }
+  .check { color: var(--bark); font-size: 1rem; }
+  .cross { color: var(--sand); font-size: 1rem; }
+
+  /* PRODUCT */
+  .product-section { padding: 8vw; background: var(--warm-white); }
+  .product-header { text-align: center; margin-bottom: 5rem; }
+  .product-card { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; background: var(--cream); padding: 4rem; max-width: 1000px; margin: 0 auto; }
+  .product-visual-wrap { background: var(--linen); aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .product-name { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; margin-bottom: 0.6rem; }
+  .product-subtitle { font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--taupe); margin-bottom: 2rem; }
+  .product-desc { font-size: 0.9rem; color: var(--bark); line-height: 2.1; margin-bottom: 2.5rem; }
+  .product-details { margin-bottom: 2.5rem; }
+  .detail-row { display: flex; justify-content: space-between; padding: 0.9rem 0; border-bottom: 1px solid var(--linen); font-size: 0.82rem; }
+  .detail-label { color: var(--taupe); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.72rem; }
+  .detail-value { color: var(--bark); }
+  .product-price { font-family: var(--serif); font-size: 2rem; font-weight: 300; margin-bottom: 1.5rem; }
+
+  /* FAQ */
+  .faq-section { padding: 8vw; }
+  .faq-list { max-width: 720px; margin: 4rem auto 0; }
+  .faq-item { border-bottom: 1px solid var(--sand); }
+  .faq-question { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 1.6rem 0; font-family: var(--sans); font-size: 0.9rem; font-weight: 400; color: var(--bark); letter-spacing: 0.04em; text-align: left; }
+  .faq-question:hover { color: var(--ink); }
+  .faq-icon { font-size: 1.4rem; font-weight: 300; color: var(--taupe); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+  details.faq-item { border-bottom: 1px solid var(--sand); }
+  details.faq-item summary {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.6rem 0; cursor: pointer; list-style: none;
+    font-size: 0.9rem; font-weight: 400; color: var(--bark); letter-spacing: 0.04em;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--taupe); flex-shrink: 0; margin-left: 1rem; }
+  details.faq-item[open] summary::after { content: '×'; }
+  details.faq-item summary:hover { color: var(--ink); }
+  .faq-answer { font-size: 0.88rem; color: var(--taupe); line-height: 2; padding-bottom: 1.4rem; }
+
+  /* REVIEWS */
+  .reviews-section { padding: 8vw; background: var(--warm-white); }
+  .reviews-empty { max-width: 720px; margin: 3rem auto 0; border: 1px dashed var(--sand); padding: 3rem; text-align: center; }
+  .reviews-empty p { font-size: 0.88rem; color: var(--taupe); }
+
+  /* ABOUT */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 70vh; }
+  .about-text { padding: 8vw 5vw 8vw 8vw; display: flex; flex-direction: column; justify-content: center; }
+  .about-body { font-size: 0.9rem; color: var(--bark); line-height: 2.1; max-width: 440px; }
+  .about-image { background: var(--linen); display: flex; align-items: center; justify-content: center; min-height: 480px; }
+
+  /* QUOTE */
+  .quote-section { padding: 8vw; background: var(--linen); text-align: center; }
+  .quote-text { font-family: var(--serif); font-style: italic; font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 300; color: var(--bark); line-height: 1.5; max-width: 700px; margin: 0 auto 1.5rem; }
+  .quote-attr { font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--taupe); }
+
+  /* FLOATING CTA */
+  .floating-cta { position: fixed; right: 2rem; bottom: 2rem; z-index: 200; opacity: 0; transform: translateY(16px); transition: opacity 0.4s, transform 0.4s; pointer-events: none; }
+  .floating-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .floating-cta a { display: block; padding: 0.85rem 1.6rem; background: var(--bark); color: var(--cream); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; box-shadow: 0 4px 20px rgba(42,35,26,0.18); transition: background 0.3s; white-space: nowrap; }
+  .floating-cta a:hover { background: var(--ink); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: var(--sand); padding: 4rem 8vw 2rem; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(212,201,182,0.2); }
+  .footer-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--warm-white); letter-spacing: 0.1em; }
+  .footer-logo span { font-style: italic; color: var(--sand); }
+  .footer-tagline { font-size: 0.8rem; color: var(--taupe); margin-top: 0.4rem; }
+  .social-links { display: flex; gap: 1rem; margin-top: 1.2rem; }
+  .social-links a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid rgba(212,201,182,0.25); color: var(--sand); text-decoration: none; transition: border-color 0.3s, color 0.3s; }
+  .social-links a:hover { border-color: var(--sand); color: var(--warm-white); }
+  .social-links svg { width: 17px; height: 17px; fill: currentColor; }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sand); transition: color 0.3s; }
+  .footer-links a:hover { color: var(--warm-white); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem; color: var(--taupe); }
+
+  /* STOCKIST / MARKET DAYS MODAL */
+  .stockist-modal-overlay {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(42,35,26,0.55);
+    display: flex; align-items: center; justify-content: center;
+    padding: 5vw;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .stockist-modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .stockist-modal {
+    background: var(--cream);
+    max-width: 420px; width: 100%;
+    padding: 3rem 2.6rem;
+    position: relative;
+    transform: translateY(12px);
+    transition: transform 0.3s;
+    border: 1px solid var(--sand);
+  }
+  .stockist-modal-overlay.open .stockist-modal { transform: translateY(0); }
+  .stockist-modal-close {
+    position: absolute; top: 1rem; right: 1.2rem;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.4rem; font-weight: 300; color: var(--taupe);
+    line-height: 1; font-family: var(--sans);
+  }
+  .stockist-modal-close:hover { color: var(--ink); }
+  .stockist-modal-title {
+    font-family: var(--serif); font-size: 1.9rem; font-weight: 300;
+    line-height: 1.2; margin-bottom: 1.6rem; color: var(--ink);
+  }
+  .stockist-modal-detail { margin-bottom: 1.8rem; }
+  .stockist-modal-row { padding: 0.9rem 0; border-bottom: 1px solid var(--linen); }
+  .stockist-modal-row:first-child { border-top: 1px solid var(--linen); }
+  .stockist-modal-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--taupe); display: block; margin-bottom: 0.3rem; }
+  .stockist-modal-value { font-size: 0.9rem; color: var(--bark); line-height: 1.7; }
+  .stockist-modal-note { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--taupe); text-align: center; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .stockist-modal { padding: 2.4rem 1.8rem; }
+    .hero, .about { grid-template-columns: 1fr; }
+    .hero-left { padding: 6rem 8vw 3rem; }
+    .hero-right { min-height: 55vw; }
+    .about-text { padding: 8vw; }
+    .product-card { grid-template-columns: 1fr; padding: 2rem; }
+    .how-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .compare-header, .compare-row { grid-template-columns: 1.5fr 1fr 1fr; }
+    .footer-top { flex-direction: column; gap: 2rem; }
+    nav ul { display: none; }
+    .lang-toggle-btn { padding: 0.4rem 0.7rem; font-size: 0.65rem; }
+    .lang-menu { min-width: 150px; }
+    .floating-cta { right: 1rem; bottom: 1rem; }
+  }
+</style>
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/08/04/07/20260804075126-JBRQBH71.js" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">under<span>note</span></a>
+  <ul>
+    <li><a href="#about" data-mi="Mō mātou" data-ja="私たちについて" data-zh="关于我们" data-ko="회사 소개">About</a></li>
+    <li><a href="#product" data-mi="Ngā Rawa" data-ja="成分" data-zh="成分" data-ko="성분">Ingredients</a></li>
+    <li><a href="#how" data-mi="Me pēhea te mahi" data-ja="使い方" data-zh="使用方法" data-ko="사용 방법">How It Works</a></li>
+    <li><a href="#" class="stockist-link" data-mi="Ngā Rā Hokohoko" data-ja="マーケット出店日" data-zh="市集日" data-ko="마켓 데이">Market Days</a></li>
+    <li><a href="mailto:undernotenz@gmail.com" data-mi="Whakapā mai" data-ja="お問い合わせ" data-zh="联系我们" data-ko="문의하기">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-toggle-btn" id="langToggleBtn" aria-haspopup="true" aria-expanded="false">
+        <span id="langToggleLabel">EN</span>
+        <span class="lang-caret">▾</span>
+      </button>
+      <div class="lang-menu" id="langMenu" role="menu">
+        <button class="lang-option active" data-lang="en" role="menuitem"><span class="lang-code">EN</span><span class="lang-native">English</span></button>
+        <button class="lang-option" data-lang="mi" role="menuitem"><span class="lang-code">MI</span><span class="lang-native">Māori</span></button>
+        <button class="lang-option" data-lang="ja" role="menuitem"><span class="lang-code">JA</span><span class="lang-native">日本語</span></button>
+        <button class="lang-option" data-lang="zh" role="menuitem"><span class="lang-code">ZH</span><span class="lang-native">中文</span></button>
+        <button class="lang-option" data-lang="ko" role="menuitem"><span class="lang-code">KO</span><span class="lang-native">한국어</span></button>
+      </div>
+    </div>
+    <a class="nav-cta" href="shop.html" data-mi="Hoko Ināianei" data-ja="今すぐ購入" data-zh="立即购买" data-ko="지금 쇼핑하기">Shop Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag" data-mi="Te Kohu Whakaroa Kakara" data-ja="香りを長持ちさせるミスト" data-zh="香氛持久喷雾" data-ko="향수 지속력 강화 미스트">Fragrance Extending Mist</span>
+    <h1 class="hero-title" data-mi="Ka memeha wawe<br>tō kakara.<br><em>Kua whakatikaina e mātou.</em>" data-ja="香水は<br>すぐに消えてしまう。<br><em>それを解決しました。</em>" data-zh="你的香水<br>消散得太快。<br><em>我们解决了这个问题。</em>" data-ko="당신의 향수는<br>너무 빨리 사라집니다.<br><em>저희가 해결했습니다.</em>">Your perfume<br>fades too fast.<br><em>We fixed that.</em></h1>
+    <p class="hero-problem" data-mi="He maha ngā kakara ka memeha tere. He nui te utu, he uaua hoki te whakahou i te kakara." data-ja="多くの香水はすぐに香りが薄れてしまいます。つけ直すのはコストがかかり、手間もかかります。" data-zh="许多香水都容易很快消散。重新喷洒既昂贵又麻烦。" data-ko="많은 향수가 너무 빨리 사라집니다. 다시 뿌리는 것은 비용이 많이 들고 번거롭습니다.">Many perfumes can fade too quickly. Reapplying gets expensive — and inconvenient.</p>
+    <p class="hero-body" data-mi="He kohu whakaroa kakara a Undernote, i hangaia hei āwhina i tō kakara kia roa ake te noho — me te iti o te whakarerekē i te kakara e arohaina ana e koe." data-ja="Undernoteは、お気に入りの香りへの影響を最小限に抑えながら、香水を長持ちさせるようデザインされた香りミストです。" data-zh="Undernote 是一款香氛延展喷雾，专为延长香水持久度而设计，同时对您喜爱的香气影响降到最低。" data-ko="Undernote는 좋아하는 향에 미치는 영향은 최소화하면서 향수 지속력을 높이도록 설계된 향 연장 미스트입니다.">Undernote is a fragrance extending mist designed to help your perfume last longer — with minimal impact on the scent you love.</p>
+    <a class="btn-primary" href="shop.html" data-mi="Hokona te Kohu" data-ja="ミストを購入する" data-zh="选购香氛喷雾" data-ko="미스트 구매하기">Shop the Mist</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-ring ring-1"></div>
+    <div class="hero-ring ring-2"></div>
+    <div class="hero-ring ring-3"></div>
+    <div class="hero-visual">
+      <img class="bottle-svg" src="undernote-product.jpg" alt="Undernote Scent Mist bottle">
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div style="text-align:center;">
+    <span class="section-label" data-mi="Me pēhea te mahi" data-ja="使い方" data-zh="使用方法" data-ko="사용 방법">How It Works</span>
+    <h2 class="section-title" data-mi="E toru ngā kaupae.<br><em>He kakara e roa ake ana.</em>" data-ja="3つのステップで<br><em>香りを長持ちさせる。</em>" data-zh="三个步骤，<br><em>延长留香。</em>" data-ko="세 단계로<br><em>향을 오래 유지하세요.</em>">Three steps.<br><em>Extended scent.</em></h2>
+    <p style="font-size:0.9rem; color:var(--taupe); max-width:480px; margin:0 auto;" data-mi="Ka hanga a Undernote i tētahi paparanga angiangi ki runga i te kiri, i hangaia hei āwhina ki te karapoti i tō kakara, hei tautoko kia kaua e memeha wawe." data-ja="Undernoteは肌の上に繊細な層を作り、香りを包み込むようにデザインされているため、香りが早く蒸発するのを防ぐサポートをします。" data-zh="Undernote 会在肌肤上形成一层细腻的薄膜，专为包裹香气而设计，帮助减缓香水过快挥发。" data-ko="Undernote는 피부 위에 얇은 막을 형성하여 향을 감싸주도록 설계되어, 향이 너무 빨리 증발하지 않도록 돕습니다.">Undernote forms a fine layer on skin that's designed to help wrap around your fragrance, supporting it against evaporating too quickly.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-item">
+      <div class="how-num">01</div>
+      <p class="how-title" data-mi="Pupuhi ki te kiri" data-ja="肌にスプレー" data-zh="喷于肌肤" data-ko="피부에 분사">Spray on skin</p>
+      <p class="how-body" data-mi="Pupuhi 2–3 ngā wā ki te kiri — ki ngā tapokorua, te kakī, me roto o te tuke." data-ja="手首、首、肘の内側などに2〜3回スプレーします。" data-zh="在手腕、颈部、手肘内侧喷洒2-3次。" data-ko="손목, 목, 팔꿈치 안쪽 등에 2~3회 뿌려주세요.">Spray 2–3 times on skin — wrists, neck, inner elbows.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">02</div>
+      <p class="how-title" data-mi="Tatari mō tētahi wā" data-ja="少し待つ" data-zh="稍作等待" data-ko="잠시 기다리기">Wait a moment</p>
+      <p class="how-body" data-mi="Tatari mō te 10–15 hēkona kia mitomito ai." data-ja="10〜15秒待って肌になじませます。" data-zh="等待10-15秒使其吸收。" data-ko="10~15초간 기다려 흡수시켜 주세요.">Wait 10–15 seconds for it to absorb.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">03</div>
+      <p class="how-title" data-mi="Whakamahia te kakara" data-ja="香水をつける" data-zh="喷洒香水" data-ko="향수 뿌리기">Apply fragrance</p>
+      <p class="how-body" data-mi="Whakamahia tō kakara pēnei i ngā wā katoa. I hangaia a Undernote hei āwhina kia roa ake te noho o te kakara puta noa i te rā." data-ja="いつも通り香水をつけます。Undernoteは一日を通して香りを長持ちさせるようデザインされています。" data-zh="像往常一样喷上您的香水。Undernote旨在帮助香气在一整天内持久留香。" data-ko="평소처럼 향수를 뿌려주세요. Undernote는 하루 종일 향이 오래 지속되도록 돕습니다.">Apply fragrance on top as usual. Undernote is designed to help it last longer throughout the day.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMPARISON -->
+<section class="compare-section" id="compare">
+  <div style="text-align:center;">
+    <span class="section-label" data-mi="He aha a Undernote" data-ja="Undernoteが選ばれる理由" data-zh="为什么选择 Undernote" data-ko="언더노트를 선택하는 이유">Why Undernote</span>
+    <h2 class="section-title" data-mi="Ehara i te <em>paparanga noa.</em>" data-ja="ただの<em>もう一層</em>ではありません。" data-zh="不仅仅是<em>又一层喷雾。</em>" data-ko="단순한 <em>또 하나의 레이어가</em> 아닙니다.">Not just <em>another layer.</em></h2>
+  </div>
+  <div class="compare-table">
+    <div class="compare-header">
+      <div class="compare-header-cell"></div>
+      <div class="compare-header-cell highlight">Undernote</div>
+      <div class="compare-header-cell dim" data-mi="Te whakahou anō i te kakara" data-ja="香水のつけ直し" data-zh="重新喷洒香水" data-ko="향수 다시 뿌리기">Reapplying perfume</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature" data-mi="Whakaroa i te wā e mau ana" data-ja="持続時間を延長" data-zh="延长留香时间" data-ko="지속 시간 연장">Extends wear time</div>
+      <div class="compare-cell val col-us"><span class="check">✓</span></div>
+      <div class="compare-cell val"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature" data-mi="He iti noa te whakarerekē i tō kakara" data-ja="香りへの影響を最小限に" data-zh="对香气影响极小" data-ko="향에 미치는 영향 최소화">Minimal impact on your scent</div>
+      <div class="compare-cell val col-us"><span class="check">✓</span></div>
+      <div class="compare-cell val"><span class="cross">✗</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature" data-mi="Ka mahi tahi me ngā momo kakara katoa" data-ja="どんな香水にも使える" data-zh="适用于任何香水" data-ko="모든 향수와 함께 사용 가능">Works with any perfume</div>
+      <div class="compare-cell val col-us"><span class="check">✓</span></div>
+      <div class="compare-cell val"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature" data-mi="Kāore he ipu tāpiri hei kawe" data-ja="持ち歩くボトルが増えない" data-zh="无需携带额外瓶子" data-ko="추가로 챙길 병이 없음">No extra bottles to carry</div>
+      <div class="compare-cell val col-us"><span class="check">✓</span></div>
+      <div class="compare-cell val"><span class="cross">✗</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature" data-mi="He iti ake te kakara e whakamahia ana" data-ja="香水の使用量を減らせる" data-zh="整体减少香水用量" data-ko="전체적인 향수 사용량 감소">Use less perfume overall</div>
+      <div class="compare-cell val col-us"><span class="check">✓</span></div>
+      <div class="compare-cell val"><span class="cross">✗</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCT -->
+<section class="product-section" id="product">
+  <div class="product-header">
+    <span class="section-label" data-mi="Te Hua" data-ja="商品について" data-zh="产品介绍" data-ko="제품 소개">The Product</span>
+    <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3rem);" data-mi="Kotahi te kohu. Ngā kakara katoa." data-ja="1本のミストで、あらゆる香りに。" data-zh="一瓶喷雾，适配所有香氛。" data-ko="하나의 미스트, 모든 향수에.">One mist. Every fragrance.</h2>
+  </div>
+  <div class="product-card">
+    <div class="product-visual-wrap">
+      <img src="undernote-product.jpg" alt="Undernote Scent Mist bottle" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+    <div>
+      <h3 class="product-name" data-mi="Kohu Kakara" data-ja="セントミスト" data-zh="香氛喷雾" data-ko="센트 미스트">Scent Mist</h3>
+      <p class="product-subtitle" data-mi="Te Puhipuhi Whakaroa Kakara" data-ja="香り持続スプレー" data-zh="香氛延展喷雾" data-ko="향 지속 스프레이">Fragrance Extending Spray</p>
+      <p class="product-desc" data-mi="He kohu māmā, kāore he kakara ōna ake. Whakamahia ki ngā wāhi pupuhi toto i mua i tō kakara hei āwhina kia roa ake te noho, me te iti o te whakarerekē i te haunga." data-ja="重さを感じさせない、無香のミストです。香水をつける前に脈のある部位に使用することで、香りの持続をサポートしながら香りそのものへの影響を最小限に抑えます。" data-zh="一款轻盈无味的喷雾。在喷香水前喷于脉搏点，帮助支撑更持久的留香，同时对气味本身影响甚微。" data-ko="가볍고 무향인 미스트입니다. 향수를 뿌리기 전에 맥박점에 사용하면 향의 지속력을 높이는 데 도움이 되며, 향 자체에 미치는 영향은 최소화됩니다.">A weightless, unscented mist. Apply to pulse points before your perfume to help support longer-lasting wear, with minimal impact on how it smells.</p>
+      <div class="product-details">
+        <div class="detail-row">
+          <span class="detail-label" data-mi="Rahinga" data-ja="容量" data-zh="容量" data-ko="용량">Volume</span>
+          <span class="detail-value">30 ml</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label" data-mi="Ngā Rawa Matua" data-ja="主要成分" data-zh="主要成分" data-ko="주요 성분">Key Ingredients</span>
+          <span class="detail-value" data-mi="Wai, Waipiro (Ethanol), DPG, ērā atu" data-ja="水、エタノール、DPG など" data-zh="水、乙醇、DPG 等" data-ko="물, 에탄올, DPG 등">Water, Ethanol, DPG etc</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label" data-mi="Kakara" data-ja="香り" data-zh="香味" data-ko="향">Scent</span>
+          <span class="detail-value" data-mi="Kāore He Kakara" data-ja="無香" data-zh="无香" data-ko="무향">Unscented</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label" data-mi="Ka Mahi Tahi Me" data-ja="対応する香水" data-zh="适用范围" data-ko="사용 가능 대상">Works With</span>
+          <span class="detail-value" data-mi="Ngā Kakara Katoa" data-ja="すべての香水" data-zh="所有香氛" data-ko="모든 향수">All Fragrances</span>
+        </div>
+      </div>
+      <p class="product-price">$30 NZD</p>
+      <a class="btn-primary" href="#" data-mi="Tāpiri ki te Kete" data-ja="カートに追加" data-zh="加入购物车" data-ko="장바구니에 담기">Add to Cart</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div style="text-align:center;">
+    <span class="section-label" data-mi="Pātai Auau" data-ja="よくある質問" data-zh="常见问题" data-ko="자주 묻는 질문">FAQ</span>
+    <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3rem);" data-mi="Pātai me ngā <em>Whakautu</em>" data-ja="質問と<em>回答</em>" data-zh="问题与<em>解答</em>" data-ko="질문과 <em>답변</em>">Questions &amp; <em>Answers</em></h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary data-mi="Ka whakarerekē a Undernote i te kakara o tōku kakara?" data-ja="Undernoteは香水の香りを変えてしまいますか？" data-zh="Undernote 会改变我香水的味道吗？" data-ko="Undernote가 제 향수의 향을 바꾸나요?">Will Undernote change the scent of my perfume?</summary>
+      <div class="faq-answer" data-mi="Kāo — kāore rawa he kakara o Undernote. Ka hanga e ia tētahi paparanga māmā hei āwhina i tō kakara ki te piri ki tō kiri, nā reira ka mau tonu te kakara e arohaina ana e koe mai i te ata tae noa ki te ahiahi." data-ja="いいえ — Undernoteは完全に無香料です。香水が肌になじむのを助ける軽い下地層を作るため、朝から夜まで大好きな香りをそのまま楽しめます。" data-zh="不会——Undernote 完全无味。它会形成一层轻薄的基底，帮助香水更好地附着在肌肤上，让您喜爱的香气从早到晚保持真实。" data-ko="아니요 — Undernote는 완전 무향입니다. 향수가 피부와 더 잘 밀착되도록 가벼운 베이스 층을 형성하여, 좋아하는 향이 아침부터 저녁까지 그대로 유지되도록 도와줍니다.">No — Undernote is completely unscented. It creates a lightweight base layer that helps your perfume bond with your skin, so the scent you love stays true from morning to evening.</div>
+    </details>
+    <details class="faq-item">
+      <summary data-mi="Ka mahi tahi ia me ngā momo kakara katoa?" data-ja="どんな種類の香水にも使えますか？" data-zh="它适用于所有类型的香水吗？" data-ko="모든 종류의 향수에 사용할 수 있나요?">Does it work with all types of fragrance?</summary>
+      <div class="faq-answer" data-mi="I hangaia a Undernote kia mahi pai ki te nuinga o ngā momo eau de parfum, eau de toilette, me te eau de cologne — ahakoa he hinu, he waipiro rānei tōna tūāpapa." data-ja="Undernoteは、オイルベース・アルコールベースを問わず、多くのオードパルファム、オードトワレ、オーデコロンと相性が良いようにデザインされています。" data-zh="Undernote 专为与大多数淡香精、淡香水和古龙水配方良好搭配而设计——无论是油基还是酒精基。" data-ko="Undernote는 오일 베이스든 알코올 베이스든 대부분의 오드퍼퓸, 오드뜨왈렛, 오드콜로뉴와 잘 어울리도록 설계되었습니다.">Undernote is designed to work well with most eau de parfum, eau de toilette, and eau de cologne formulas — whether oil-based or alcohol-based.</div>
+    </details>
+    <details class="faq-item">
+      <summary data-mi="Me pēhea taku whakamahi?" data-ja="使い方は？" data-zh="如何使用？" data-ko="사용 방법은 어떻게 되나요?">How do I use it?</summary>
+      <div class="faq-answer" data-mi="Pupuhi 2–3 ngā wā ki te kiri — ki ngā tapokorua, te kakī, roto rānei o te tuke. Tatari mō te 10–15 hēkona kia mitomito ai. Kātahi ka whakamahi i tō kakara pēnei i ngā wā katoa. I hangaia a Undernote hei āwhina kia roa ake te noho o te kakara puta noa i te rā." data-ja="手首、首、肘の内側などの肌に2〜3回スプレーします。10〜15秒待って肌になじませてください。その後、いつも通り香水をつけます。Undernoteは一日を通して香りを長持ちさせるようデザインされています。" data-zh="在手腕、颈部或手肘内侧喷洒2-3次。等待10-15秒使其吸收，然后像平常一样喷上您的香水。Undernote旨在帮助香气在一整天内更持久。" data-ko="손목, 목, 팔꿈치 안쪽 등 피부에 2~3회 뿌려주세요. 10~15초간 기다려 흡수시킨 후, 평소처럼 향수를 뿌려주세요. Undernote는 하루 종일 향이 더 오래 지속되도록 돕습니다.">Spray 2–3 times on skin — wrists, neck, or inner elbows. Wait 10–15 seconds for it to absorb. Then apply your fragrance on top as you normally would. Undernote is designed to help it last longer throughout the day.</div>
+    </details>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div style="text-align:center;">
+    <span class="section-label" data-mi="Ngā Arotake" data-ja="レビュー" data-zh="评价" data-ko="리뷰">Reviews</span>
+    <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3rem);" data-mi="He aha te kōrero <em>a te iwi</em>" data-ja="お客様の<em>声</em>" data-zh="大家的<em>评价</em>" data-ko="고객들의 <em>후기</em>">What people <em>are saying</em></h2>
+  </div>
+  <div class="reviews-empty">
+    <p data-mi="Kāore anō he arotake — ko koe pea te tuatahi ki te whakapuaki i tō wheako." data-ja="まだレビューはありません — あなたの体験を最初にシェアしてみませんか。" data-zh="暂无评价——欢迎成为第一个分享体验的人。" data-ko="아직 리뷰가 없습니다 — 첫 번째로 경험을 공유해보세요.">No reviews yet — be the first to share your experience.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <span class="section-label" data-mi="Tō Mātou Kōrero" data-ja="私たちのストーリー" data-zh="我们的故事" data-ko="브랜드 스토리">Our Story</span>
+    <h2 class="section-title" data-mi="He mea whaiaro<br><em>te kakara.</em><br>Ka pēnei tonu mātou." data-ja="香りは<br><em>とても個人的なもの。</em><br>私たちはそれを大切にします。" data-zh="香气是<br><em>私人的。</em><br>我们希望它保持这样。" data-ko="향은<br><em>지극히 개인적입니다.</em><br>저희는 그 본질을 지킵니다.">Fragrance is<br><em>personal.</em><br>We keep it that way.</h2>
+    <p class="about-body" data-mi="He raru e mōhiotia ana e te nuinga o te hunga aroha ki te kakara, arā, te tere memeha o te kakara. He kohu whakaroa kakara a Undernote i hangaia hei āwhina kia roa ake te noho o tō kakara — me te iti o te whakarerekē i te kakara e arohaina ana e koe." data-ja="香水がすぐに薄れてしまうのは、多くの香水好きが抱える悩みです。Undernoteは、お気に入りの香りへの影響を最小限に抑えながら、香水を長持ちさせるようデザインされた香り持続ミストです。" data-zh="香水消散得太快是许多香氛爱好者都熟悉的问题。Undernote 是一款香氛延展喷雾，专为延长香水持久度而设计，同时尽量减少对您喜爱香气的影响。" data-ko="향수가 너무 빨리 사라지는 것은 많은 향수 애호가들이 공감하는 고민입니다. Undernote는 좋아하는 향에 대한 영향은 최소화하면서 향수 지속력을 높이도록 설계된 향 연장 미스트입니다.">Perfume fading too fast is a problem most fragrance lovers know. Undernote is a fragrance extending mist designed to help your perfume last longer — with minimal impact on the scent you love.</p>
+  </div>
+  <div class="about-image">
+    <img src="undernote-product.jpg" alt="Undernote Scent Mist bottle" style="width:280px; max-width:80%; height:auto; box-shadow:0 30px 60px rgba(42,35,26,0.15);">
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="quote-text" data-mi='"Ko tō kakara te mea whakamutunga e whakamauria ana e koe — ā, ko te mea tuatahi e maumahara ai te tangata."' data-ja="「香りは最後に纏うもの——そして人々が最初に覚えているもの。」" data-zh="“香气是你最后涂抹的东西——却是人们最先记住的。”" data-ko="&quot;당신의 향은 마지막으로 더하는 것이지만, 사람들이 가장 먼저 기억하는 것입니다.&quot;">"Your scent is the last thing you put on — and the first thing people remember."</p>
+  <p class="quote-attr" data-mi="— Te Whakaaro Nui o Undernote" data-ja="— Undernoteの哲学" data-zh="— Undernote 的理念" data-ko="— 언더노트의 철학">— The Undernote Philosophy</p>
+</section>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floatingCta">
+  <a href="shop.html" data-mi="Hoko Ināianei" data-ja="今すぐ購入" data-zh="立即购买" data-ko="지금 구매하기">Buy Now</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">under<span>note</span></div>
+      <p class="footer-tagline" data-mi="He kakara e mau tonu ana." data-ja="香りは、留まる。" data-zh="留住香气。" data-ko="머무는 향.">Scent that stays.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/undernotenz" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@undernote_nz" target="_blank" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="shop.html" data-mi="Toa Hoko" data-ja="ショップ" data-zh="商店" data-ko="쇼핑">Shop</a>
+      <a href="#about" data-mi="Mō mātou" data-ja="私たちについて" data-zh="关于我们" data-ko="회사 소개">About</a>
+      <a href="#product" data-mi="Ngā Rawa" data-ja="成分" data-zh="成分" data-ko="성분">Ingredients</a>
+      <a href="#how" data-mi="Me pēhea te mahi" data-ja="使い方" data-zh="使用方法" data-ko="사용 방법">How It Works</a>
+      <a href="#" class="stockist-link" data-mi="Ngā Rā Hokohoko" data-ja="マーケット出店日" data-zh="市集日" data-ko="마켓 데이">Market Days</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-mi="© 2026 Undernote. Kua rāhuitia ngā mana katoa." data-ja="© 2026 Undernote. 無断複写・転載を禁じます。" data-zh="© 2026 Undernote. 保留所有权利。" data-ko="© 2026 Undernote. 모든 권리 보유.">© 2026 Undernote. All rights reserved.</p>
+    <p data-mi="Kaupapahere Tūmataiti · Ngā Ture Whakamahi" data-ja="プライバシーポリシー・利用規約" data-zh="隐私政策 · 使用条款" data-ko="개인정보처리방침 · 이용약관">Privacy Policy · Terms of Use</p>
+  </div>
+  <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(212,201,182,0.1); font-size:0.68rem; color:#9C8F7E; line-height:1.8;">
+    <p style="margin-bottom:0.8rem;" data-mi='<strong style="letter-spacing:0.08em; font-weight:400;">Whakamōhiotanga &amp; Ngā Mōhiohio Kamupene</strong><br>He pakihi ākonga tēnei e whakahaerehia ana i raro i te Young Enterprise Scheme (YES). Ehara tēnei i te kamupene rēhita mau tonu, engari he whakatairanga pakihi e rere ana mō te tau ako 2026. Ingoa Kamupene: Undernote · Kura: 50 Murphy Road, Taradale, Napier 4112, Aotearoa · Whakapā: <a href="mailto:undernotenz@gmail.com" style="color:#9C8F7E;">undernotenz@gmail.com</a>' data-ja="<strong style=&quot;letter-spacing:0.08em; font-weight:400;&quot;>免責事項・会社情報</strong><br>本事業はYoung Enterprise Scheme（YES）のもとで運営される学生ビジネスです。恒久的に登記された有限会社ではなく、2026年度の実践的なビジネスシミュレーションとして運営されています。会社名：Undernote · 学校：50 Murphy Road, Taradale, Napier 4112, New Zealand · お問い合わせ：<a href=&quot;mailto:undernotenz@gmail.com&quot; style=&quot;color:#9C8F7E;&quot;>undernotenz@gmail.com</a>" data-zh="<strong style=&quot;letter-spacing:0.08em; font-weight:400;&quot;>免责声明与公司信息</strong><br>本企业是在新西兰青年企业计划（Young Enterprise Scheme, YES）下运营的学生企业。这不是一家永久注册的有限公司，而是2026学年的实践性商业模拟项目。公司名称：Undernote · 学校：50 Murphy Road, Taradale, Napier 4112, New Zealand · 联系方式：<a href=&quot;mailto:undernotenz@gmail.com&quot; style=&quot;color:#9C8F7E;&quot;>undernotenz@gmail.com</a>" data-ko="<strong style=&quot;letter-spacing:0.08em; font-weight:400;&quot;>면책 조항 및 회사 정보</strong><br>이 사업체는 청년 기업가 프로그램(Young Enterprise Scheme, YES)의 일환으로 운영되는 학생 창업 프로젝트입니다. 영구적으로 등록된 유한회사가 아니라 2026학년도 실습형 비즈니스 시뮬레이션입니다. 회사명: Undernote · 학교: 50 Murphy Road, Taradale, Napier 4112, New Zealand · 문의: <a href=&quot;mailto:undernotenz@gmail.com&quot; style=&quot;color:#9C8F7E;&quot;>undernotenz@gmail.com</a>"><strong style="letter-spacing:0.08em; font-weight:400;">Disclaimer &amp; Company Information</strong><br>
+    This is a student business operating under the Young Enterprise Scheme (YES). This is not a permanently registered limited company, but a practical business simulation running for the 2026 academic year. Company Name: Undernote · School: 50 Murphy Road, Taradale, Napier 4112, New Zealand · Contact: <a href="mailto:undernotenz@gmail.com" style="color:#9C8F7E;">undernotenz@gmail.com</a></p>
+    <p data-mi='<strong style="letter-spacing:0.08em; font-weight:400;">Kaupapahere Tūmataiti</strong><br>E whakanui ana mātou i tō tūmataiti. E ai ki te New Zealand Privacy Act 2020, ka tukatukahia haumaru ngā mōhiohio whaiaro, ngā wāhi tuku, me ngā raraunga utu a ngā kaihoko mā roto i a Shopify me YES Pay. Kāore mātou e rokiroki, e tuku pūaha, e tukatuka rānei i ō raraunga pūtea ki tētahi tūmau o waho, ki tētahi pūnaha hangarau atamai (AI) rānei.' data-ja="<strong style=&quot;letter-spacing:0.08em; font-weight:400;&quot;>プライバシーポリシー</strong><br>私たちはお客様のプライバシーを尊重します。ニュージーランドのPrivacy Act 2020に準拠し、お客様の個人情報、配送先住所、お支払いデータはShopifyおよびYES Payを通じて安全に処理されます。お客様の金融データを外部サーバーや人工知能（AI）プラットフォームに保存・漏洩・処理することはありません。" data-zh="<strong style=&quot;letter-spacing:0.08em; font-weight:400;&quot;>隐私政策</strong><br>我们重视您的隐私。根据新西兰2020年隐私法（Privacy Act 2020），所有客户的个人信息、收货地址和支付数据均通过 Shopify 和 YES Pay 安全处理。我们不会将您的财务数据存储、泄露或处理于任何外部服务器或人工智能（AI）平台。" data-ko="<strong style=&quot;letter-spacing:0.08em; font-weight:400;&quot;>개인정보처리방침</strong><br>저희는 고객님의 개인정보를 소중히 다룹니다. 뉴질랜드 개인정보보호법(Privacy Act 2020)을 준수하여, 모든 고객 개인정보, 배송 주소, 결제 데이터는 Shopify 및 YES Pay를 통해 안전하게 처리됩니다. 고객님의 금융 데이터를 외부 서버나 인공지능(AI) 플랫폼에 저장, 유출 또는 처리하지 않습니다."><strong style="letter-spacing:0.08em; font-weight:400;">Privacy Policy</strong><br>
+    We value your privacy. In compliance with the New Zealand Privacy Act 2020, all customer personal information, shipping addresses, and payment data are processed securely via Shopify and YES Pay. We do not store, leak, or process your financial data on any external servers or artificial intelligence (AI) platforms.</p>
+  </div>
+</footer>
+
+<!-- MARKET DAYS MODAL -->
+<div class="stockist-modal-overlay" id="stockistModal">
+  <div class="stockist-modal">
+    <button class="stockist-modal-close" id="stockistModalClose" aria-label="Close">×</button>
+    <span class="section-label" data-mi="Ngā Rā Hokohoko" data-ja="マーケット出店日" data-zh="市集日" data-ko="마켓 데이">Market Days</span>
+    <h3 class="stockist-modal-title" data-mi="Tō Mātou Hokonga Tuatahi" data-ja="初のポップアップ販売" data-zh="我们的首次快闪销售" data-ko="첫 팝업 세일">Our First Pop-Up Sale</h3>
+    <div class="stockist-modal-detail">
+      <div class="stockist-modal-row">
+        <span class="stockist-modal-label" data-mi="Te Rā" data-ja="日程" data-zh="日期" data-ko="날짜">Date</span>
+        <span class="stockist-modal-value" data-mi="Rātapu, 9 o Ākuhata 2026" data-ja="2026年8月9日（日）" data-zh="2026年8月9日 星期日" data-ko="2026년 8월 9일 일요일">Sunday, 9 August 2026</span>
+      </div>
+      <div class="stockist-modal-row">
+        <span class="stockist-modal-label" data-mi="Te Wā" data-ja="時間" data-zh="时间" data-ko="시간">Time</span>
+        <span class="stockist-modal-value">8:30am – 12:30pm</span>
+      </div>
+      <div class="stockist-modal-row">
+        <span class="stockist-modal-label" data-mi="Te Wāhi" data-ja="場所" data-zh="地点" data-ko="장소">Location</span>
+        <span class="stockist-modal-value">Tomoana Showgrounds<br>Kenilworth Road, Mayfair<br>Hastings 4122</span>
+      </div>
+    </div>
+    <p class="stockist-modal-note" data-mi="Nau mai, haere mai!" data-ja="ぜひ会場でお会いしましょう！" data-zh="期待与您在现场相见！" data-ko="현장에서 만나요!">We'd love to see you there!</p>
+  </div>
+</div>
+
+<script>
+  var LANG_LABELS = { en: 'EN', mi: 'MI', ja: 'JA', zh: 'ZH', ko: 'KO' };
+
+  function setLang(lang) {
+    var attr = 'data-' + lang;
+    document.querySelectorAll('[data-mi]').forEach(el => {
+      if (!el.hasAttribute('data-en-cache')) {
+        el.setAttribute('data-en-cache', el.innerHTML);
+      }
+      if (lang !== 'en' && el.hasAttribute(attr)) {
+        el.innerHTML = el.getAttribute(attr);
+      } else {
+        el.innerHTML = el.getAttribute('data-en-cache');
+      }
+    });
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+    document.getElementById('langToggleLabel').textContent = LANG_LABELS[lang] || 'EN';
+    document.documentElement.setAttribute('lang', lang);
+    try { localStorage.setItem('undernote-lang', lang); } catch (e) {}
+  }
+
+  var langSwitcher = document.getElementById('langSwitcher');
+  var langToggleBtn = document.getElementById('langToggleBtn');
+
+  function closeLangMenu() {
+    langSwitcher.classList.remove('open');
+    langToggleBtn.setAttribute('aria-expanded', 'false');
+  }
+  function toggleLangMenu() {
+    const isOpen = langSwitcher.classList.toggle('open');
+    langToggleBtn.setAttribute('aria-expanded', String(isOpen));
+  }
+  langToggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleLangMenu();
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      setLang(opt.dataset.lang);
+      closeLangMenu();
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!langSwitcher.contains(e.target)) closeLangMenu();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLangMenu();
+  });
+
+  let savedLang = 'en';
+  try { savedLang = localStorage.getItem('undernote-lang') || 'en'; } catch (e) {}
+  setLang(savedLang);
+
+  document.querySelectorAll('.stockist-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('stockistModal').classList.add('open');
+    });
+  });
+  document.getElementById('stockistModalClose').addEventListener('click', () => {
+    document.getElementById('stockistModal').classList.remove('open');
+  });
+  document.getElementById('stockistModal').addEventListener('click', (e) => {
+    if (e.target.id === 'stockistModal') e.currentTarget.classList.remove('open');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.getElementById('stockistModal').classList.remove('open');
+  });
+
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  const cta = document.getElementById('floatingCta');
+  window.addEventListener('scroll', () => {
+    cta.classList.toggle('visible', window.scrollY > window.innerHeight * 0.7);
+  });
+</script>
+</body>
+</html>
